@@ -1,0 +1,174 @@
+﻿
+@model IEnumerable<Blake.BO.Person.PersonAccount>
+@{
+    ViewBag.Title = "Person Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset>
+    <legend>Account</legend>
+</fieldset>
+
+<div class="container" ng-app="App" ng-controller="AccountCntrl">
+    <div class="row">
+      
+        <form name="form" class="css-form" novalidate>
+            <div class="span6" >
+                <table class="table table-condensed table-bordered">
+                    <thead class="btn-info">
+                        <tr> <td colspan="2" style="text-align: center"> Account Details </td> </tr>
+                    </thead>
+                    <thead class="btn-info">
+                        <tr> <td colspan="2" style="text-align: center">
+    <input type="button" class="btn btn-mini btn-block"  ng-click="EditAccountTransaction(0)" ng-disabled="CurrentAccount.AccountId === null" value="New Transaction" />
+</td> </tr>
+                    </thead>
+                    <tbody style="background-color: #f9f9f9">
+                        <tr>
+                            <td>Account Number</td>
+                            <td>
+                                <input type="text" class="custom-resiter-input" ng-model="CurrentAccount.AccountNumber" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Balance</td>
+                            <td>
+                                <input type="number" class="custom-resiter-input" ng-model="CurrentAccount.Balance"  />
+                            </td>
+                        </tr>
+
+
+
+                        <tr ng-show="CurrentAccount.CanCloseAccount">
+                            <td>Transactions</td>
+                            <td>
+                                <table class="table table-condensed table-bordered">
+                                    <thead class="btn-info">
+                                        <tr>
+                                            <td class="span1">
+                                                Description
+                                            </td>
+                                            <td class="span3">
+                                                Amount
+                                            </td>
+                                            <td class="span3">
+                                                Transaction Date
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="acc in CurrentAccount.Transactions">
+                                            <td>{{acc.Description}}</td>
+                                            <td>{{acc.Amount}}</td>
+                                            <td>{{acc.TransDate}}</td>
+                                            <td style="padding: 0; margin: 0;">
+                                                <input type="button" class="btn btn-mini btn-block" ng-click="EditAccountTransaction(acc.TransactionId)" value="Edit" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" style="background-color: white">
+                                <span class="text-info">{{SaveStatus}}</span>
+
+
+                                <button class="btn btn-small btn-danger pull-right" ng-click="DeleteAccount(CurrentAccount.AccountId)" ng-disabled="CurrentAccount.CanCloseAccount">Close Account</button>
+                                <button class="btn btn-small btn-success pull-right" ng-click="SaveAccount(CurrentAccount)" ng-disabled="form.$invalid || isUnchanged(person)">Save</button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    angular.module('App');
+
+    app.controller('AccountCntrl', function ($scope, $http) {
+        $scope.Account = {};
+        $scope.Transactions = [];
+        $scope.CurrentAccount = {};
+        $scope.CurrentAccountSelected = @ViewBag.AccNumber;
+        $scope.CurrentPersonSelected = @ViewBag.PersonId;
+        $scope.SaveStatus = "";
+
+
+        $scope.SaveAccount = function (account) {
+            debugger;
+            personAcc = {
+                AccountNumber : account.AccountNumber,
+                FK_PersonId : $scope.CurrentPersonSelected,
+                Balance: account.Balance,
+                AccountId : account.AccountId
+            };
+            $http({
+                url: '/Person/SaveAccount/',
+                method: "POST",
+                data: { personAccount: personAcc },
+                headers: { 'Content-Type': 'application/json' }
+            }).then(function (response) {
+                $scope.CurrentAccount = response.data;
+                $scope.CurrentAccountSelected = 1;
+                $scope.SaveStatus = response.data.statusMsg;  
+            });
+        }
+
+        $scope.DeleteAccount = function (accId) {
+            $http({
+                url: '/Person/DeleteAccount/',
+                method: "POST",
+                data: { accId: accId },
+                headers: { 'Content-Type': 'application/json' }
+            }).then(function (response) {
+                $scope.CurrentAccount = response.data;
+                if (response.data.statusMsg === 'success') {
+                    $scope.SaveStatus = "Save Successful...";
+              
+                }
+                else {
+                    if (response.data.statusMsg === 'error') {
+                        $scope.SaveStatus = "Error Occured";
+                      
+                    }
+                }
+            });
+        }
+
+        $scope.Navigate = function () {
+
+            personId: $scope.CurrentAccountSelected;
+            debugger;
+            $http.post('/Person/GetPersonAccounts', { personId: $scope.CurrentAccountSelected }).then(function (ul) {
+                $scope.CurrentAccount = ul.data;
+
+
+                // $scope.showPersonDetail = true;
+            });
+        }
+        $scope.Navigate();
+
+        $scope.EditAccountTransaction = function (id) {
+            debugger;
+            accId = $scope.CurrentAccountSelected;
+            $http.post('/Person/AccountTransactionDetail', { transactionId: id, accId: accId }).then(function (ul) {
+                debugger;
+                window.location.href = ul.data.redirectUrl;
+
+                // $scope.showPersonDetail = true;
+            });
+        }
+
+    });
+</script>
+

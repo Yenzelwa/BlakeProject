@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BlakeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BlakeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="BlakeModel.Account" />
+    <EntitySet Name="Persons" EntityType="BlakeModel.Person" />
+    <EntitySet Name="Transactions" EntityType="BlakeModel.Transaction" />
+    <AssociationSet Name="FK_Account_Person" Association="BlakeModel.FK_Account_Person">
+      <End Role="Person" EntitySet="Persons" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_Account" Association="BlakeModel.FK_Transaction_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+    <FunctionImport Name="Search_Person" ReturnType="Collection(BlakeModel.Search_Person_Result)">
+      <Parameter Name="stringParam" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetPersonAccounts" ReturnType="Collection(BlakeModel.GetPersonAccounts_Result)">
+      <Parameter Name="code" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetPersons" ReturnType="Collection(BlakeModel.GetPersons_Result)">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+      <Parameter Name="SearchString" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetPersonById" ReturnType="Collection(BlakeModel.GetPersonById_Result)">
+      <Parameter Name="code" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetTransaction" ReturnType="Collection(BlakeModel.GetTransaction_Result)">
+      <Parameter Name="code" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAccount" ReturnType="Collection(BlakeModel.GetAccount_Result)">
+      <Parameter Name="code" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="person_code" Type="Int32" Nullable="false" />
+    <Property Name="account_number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="outstanding_balance" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <NavigationProperty Name="Person" Relationship="BlakeModel.FK_Account_Person" FromRole="Account" ToRole="Person" />
+    <NavigationProperty Name="Transactions" Relationship="BlakeModel.FK_Transaction_Account" FromRole="Account" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="BlakeModel.FK_Account_Person" FromRole="Person" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="account_code" Type="Int32" Nullable="false" />
+    <Property Name="transaction_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="capture_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Account" Relationship="BlakeModel.FK_Transaction_Account" FromRole="Transaction" ToRole="Account" />
+  </EntityType>
+  <Association Name="FK_Account_Person">
+    <End Type="BlakeModel.Person" Role="Person" Multiplicity="1" />
+    <End Type="BlakeModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="code" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="person_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_Account">
+    <End Type="BlakeModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="BlakeModel.Transaction" Role="Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="code" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="account_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="Search_Person_Result">
+    <Property Type="Int32" Name="code" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="surname" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetPersonAccounts_Result">
+    <Property Type="Int32" Name="code" Nullable="false" />
+    <Property Type="String" Name="account_number" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="outstanding_balance" Nullable="false" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="GetPersons_Result">
+    <Property Type="Int32" Name="code" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="surname" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalPages" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetPersonById_Result">
+    <Property Type="Int32" Name="code" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="surname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="id_number" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="AccCode" Nullable="true" />
+    <Property Type="String" Name="account_number" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="outstanding_balance" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="GetTransaction_Result">
+    <Property Type="Int32" Name="code" Nullable="false" />
+    <Property Type="DateTime" Name="transaction_date" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="capture_date" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="amount" Nullable="false" Precision="19" />
+    <Property Type="String" Name="description" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="GetAccount_Result">
+    <Property Type="Int32" Name="code" Nullable="false" />
+    <Property Type="String" Name="account_number" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="tranCode" Nullable="true" />
+    <Property Type="Decimal" Name="outstanding_balance" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="amount" Nullable="true" Precision="19" />
+    <Property Type="DateTime" Name="transaction_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="person_code" Nullable="false" />
+  </ComplexType>
+</Schema>

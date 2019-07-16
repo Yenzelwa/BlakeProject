@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blake", "Blake\Blake.csproj", "{1193A6A4-FF54-4798-AACE-246A2350A026}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blake.Tests", "Blake.Tests\Blake.Tests.csproj", "{13C83FC8-F18A-4A0E-8E0E-C0A2BF78D870}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blake.DLL", "Blake.DLL\Blake.DLL.csproj", "{77B40F41-E866-43C8-A3BD-8F081F140E20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blake.BO", "Blake.BO\Blake.BO.csproj", "{32C8727C-2AEC-4D06-BD0E-B875C8270D69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blake.BLL", "Blake.BLL\Blake.BLL.csproj", "{0ADE25F4-AD34-4EE8-ABD5-0649CEEAAAB9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1193A6A4-FF54-4798-AACE-246A2350A026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1193A6A4-FF54-4798-AACE-246A2350A026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1193A6A4-FF54-4798-AACE-246A2350A026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1193A6A4-FF54-4798-AACE-246A2350A026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13C83FC8-F18A-4A0E-8E0E-C0A2BF78D870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C83FC8-F18A-4A0E-8E0E-C0A2BF78D870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C83FC8-F18A-4A0E-8E0E-C0A2BF78D870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C83FC8-F18A-4A0E-8E0E-C0A2BF78D870}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B40F41-E866-43C8-A3BD-8F081F140E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77B40F41-E866-43C8-A3BD-8F081F140E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77B40F41-E866-43C8-A3BD-8F081F140E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B40F41-E866-43C8-A3BD-8F081F140E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32C8727C-2AEC-4D06-BD0E-B875C8270D69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32C8727C-2AEC-4D06-BD0E-B875C8270D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32C8727C-2AEC-4D06-BD0E-B875C8270D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32C8727C-2AEC-4D06-BD0E-B875C8270D69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ADE25F4-AD34-4EE8-ABD5-0649CEEAAAB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADE25F4-AD34-4EE8-ABD5-0649CEEAAAB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ADE25F4-AD34-4EE8-ABD5-0649CEEAAAB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ADE25F4-AD34-4EE8-ABD5-0649CEEAAAB9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+		SolutionGuid = {3DA57BB0-4D47-478C-9F0F-9F10E161020D}
+	EndGlobalSection
+EndGlobal

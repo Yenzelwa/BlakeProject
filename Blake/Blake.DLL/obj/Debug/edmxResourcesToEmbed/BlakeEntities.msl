@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BlakeModelStoreContainer" CdmEntityContainer="BlakeEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="BlakeModel.Account">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="outstanding_balance" ColumnName="outstanding_balance" />
+          <ScalarProperty Name="account_number" ColumnName="account_number" />
+          <ScalarProperty Name="person_code" ColumnName="person_code" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persons">
+      <EntityTypeMapping TypeName="BlakeModel.Person">
+        <MappingFragment StoreEntitySet="Persons">
+          <ScalarProperty Name="id_number" ColumnName="id_number" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="BlakeModel.Transaction">
+        <MappingFragment StoreEntitySet="Transactions">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="capture_date" ColumnName="capture_date" />
+          <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
+          <ScalarProperty Name="account_code" ColumnName="account_code" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Search_Person" FunctionName="BlakeModel.Store.Search_Person">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BlakeModel.Search_Person_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetPersons" FunctionName="BlakeModel.Store.GetPersons">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BlakeModel.GetPersons_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="TotalPages" ColumnName="TotalPages" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetPersonById" FunctionName="BlakeModel.Store.GetPersonById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BlakeModel.GetPersonById_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="id_number" ColumnName="id_number" />
+          <ScalarProperty Name="AccCode" ColumnName="AccCode" />
+          <ScalarProperty Name="account_number" ColumnName="account_number" />
+          <ScalarProperty Name="outstanding_balance" ColumnName="outstanding_balance" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTransaction" FunctionName="BlakeModel.Store.GetTransaction">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BlakeModel.GetTransaction_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
+          <ScalarProperty Name="capture_date" ColumnName="capture_date" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAccount" FunctionName="BlakeModel.Store.GetAccount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BlakeModel.GetAccount_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="account_number" ColumnName="account_number" />
+          <ScalarProperty Name="tranCode" ColumnName="tranCode" />
+          <ScalarProperty Name="outstanding_balance" ColumnName="outstanding_balance" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="person_code" ColumnName="person_code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,12 @@
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\bin\Debug\Blake.DLL.dll.config
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\bin\Debug\Blake.DLL.dll
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\bin\Debug\Blake.DLL.pdb
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\bin\Debug\EntityFramework.dll
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\bin\Debug\EntityFramework.xml
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\obj\Debug\Blake.DLL.csprojAssemblyReference.cache
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\obj\Debug\Blake.DLL.csproj.CoreCompileInputs.cache
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\obj\Debug\Blake.DLL.csproj.CopyComplete
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\obj\Debug\Blake.DLL.dll
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.DLL\obj\Debug\Blake.DLL.pdb

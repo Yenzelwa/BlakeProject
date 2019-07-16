@@ -1,0 +1,15 @@
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\bin\Debug\Blake.BO.dll
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\bin\Debug\Blake.BO.pdb
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\obj\Debug\Blake.BO.csprojAssemblyReference.cache
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\obj\Debug\Blake.BO.csproj.CoreCompileInputs.cache
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\obj\Debug\Blake.BO.dll
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\obj\Debug\Blake.BO.pdb
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\bin\Debug\AutoMapper.dll
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\bin\Debug\Blake.DLL.dll
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\bin\Debug\EntityFramework.dll
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\bin\Debug\Blake.DLL.pdb
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\bin\Debug\Blake.DLL.dll.config
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\bin\Debug\AutoMapper.pdb
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\bin\Debug\AutoMapper.xml
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\bin\Debug\EntityFramework.xml
+C:\Users\NokukhanyaD\Documents\Visual Studio 2017\Projects\Blake\Blake.BO\obj\Debug\Blake.BO.csproj.CopyComplete
